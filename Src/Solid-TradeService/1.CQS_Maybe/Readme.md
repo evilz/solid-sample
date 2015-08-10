@@ -1,0 +1,8 @@
+- Check that all queries return something ! and have no side effect
+- Check that command do not return data
+- Then refactor if needed
+- Handle Invariants (pre-condition)
+- Add Guard clause in constructor that throw ArgumentNullException
+- Add Guard clause for directory to fail fast
+- Add Guard clause in methods for file to fail fast
+- Use Maybe monad to garanted output (not null)
