@@ -1,4 +1,4 @@
-# Step 2 : Open/Closed Principle
+# Step 3 : Open/Closed Principle
 
 ## Use simple Inheritance with virtual members in this sample
 
