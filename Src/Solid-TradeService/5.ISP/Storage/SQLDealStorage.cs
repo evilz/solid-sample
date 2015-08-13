@@ -15,18 +15,21 @@ namespace TradeApp
             _connectionString = connectionString;
         }
 
-        public string ReadDeal(string id)
+        public Maybe<string> Load(string id)
         {
             
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                var result = connection.Query<string>("select Value from Deals where Id = @Id", new { Id = id });
-                return result.First();
+                var result = connection.Query<string>("select Value from Deals where Id = @Id", new { Id = id }).ToArray();
+                if(result.Any())
+                    return new Maybe<string>(result.First());
+
+                return new Maybe<string>();
             }
         }
 
-        public void WriteDeal(string id, string serializedDeal)
+        public void Save(string id, string serializedDeal)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {

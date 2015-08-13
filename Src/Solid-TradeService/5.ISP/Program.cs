@@ -13,7 +13,7 @@ namespace TradeApp
 
             Logging.LogProvider.SetCurrentLogProvider(new ColoredConsoleLogProvider()); 
 
-            DealService service = new DealService(username);
+           DealService service = new DealService(username);
             
             var id = Guid.NewGuid().ToString();
             var deal = Deal.Empty.With(

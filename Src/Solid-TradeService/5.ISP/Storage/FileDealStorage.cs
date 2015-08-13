@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics.Contracts;
+using System.IO;
 
 namespace TradeApp
 {
@@ -11,16 +13,24 @@ namespace TradeApp
             _directory = directory;
         }
 
-        public virtual void WriteDeal(string id, string serializedDeal)
+        public void Save(string id, string serializedDeal)
         {
             var path = GetFileName(id).FullName;
             File.WriteAllText(path, serializedDeal);
         }
 
-        public virtual string ReadDeal(string id)
+        public Maybe<string> Load(string id)
         {
-            var path = GetFileName(id).FullName;
-            return File.ReadAllText(path);
+            try
+            {
+                var path = GetFileName(id).FullName;
+                var text = File.ReadAllText(path);
+                return new Maybe<string>(text);
+            }
+            catch (Exception)
+            {
+                return new Maybe<string>();
+            }
         }
 
         public FileInfo GetFileName(string id)

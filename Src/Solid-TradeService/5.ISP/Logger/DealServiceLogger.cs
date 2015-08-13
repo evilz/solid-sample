@@ -3,7 +3,7 @@ using TradeApp.Models;
 
 namespace TradeApp
 {
-    public class DealServiceLogger
+    public class DealServiceLogger : IDealServiceLogger
     {
         private static readonly ILog _logger = LogProvider.For<DealService>();
 
