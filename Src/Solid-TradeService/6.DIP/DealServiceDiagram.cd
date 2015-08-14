@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TradeApp.DealService" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <AssociationLine Name="_dealCaching" Type="TradeApp.DealCaching">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.19" Y="0.6" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_dealSerializer" Type="TradeApp.DealSerializer">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.091" Y="0.61" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_dealStorage" Type="TradeApp.DealStorage">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.133" Y="0.589" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_dealServiceLogger" Type="TradeApp.DealServiceLogger">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.398" Y="0.631" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAIgIAEAAAAAAAAAQAAAAAAAAAAIAAAAAAAAgAAAAA=</HashCode>
+      <FileName>DealService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dealCaching" />
+      <Field Name="_dealSerializer" />
+      <Field Name="_dealServiceLogger" />
+      <Field Name="_dealStorage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TradeApp.DealCaching" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DealCaching.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeApp.DealSerializer" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABA=</HashCode>
+      <FileName>DealSerializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeApp.DealServiceLogger" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIEAAAAAAAAIAICAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DealServiceLogger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TradeApp.DealStorage" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAABAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DealStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

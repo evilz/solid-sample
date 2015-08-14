@@ -41,6 +41,9 @@ namespace TradeApp
                 Symbol = "UnSet",
                 Time = DateTime.MinValue
             };
+
+
+
             var vincentDeal =  service.Load(id).DefaultIfEmpty(defaultDeal).Single();
            Console.WriteLine(vincentDeal);
 
