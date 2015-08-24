@@ -1,25 +1,26 @@
 ﻿using System;
+using Functional.Maybe;
 using Newtonsoft.Json;
 using TradeApp.Models;
 
 namespace TradeApp
 {
-    public class DealSerializer : IDealSerializer
+    public class JsonSerializer<T> : ISerializer<T> where T : IIdentifiable
     {
-        public string SerializeDeal(Deal deal)
+        public string Serialize(T entity)
         {
-            return JsonConvert.SerializeObject(deal);
+            return JsonConvert.SerializeObject(entity);
         }
 
-        public Maybe<Deal> DeserializeDeal(string serializedDeal)
+        public Maybe<T> Deserialize(string serializedEntity)
         {
             try
             {
-                return new Maybe<Deal>(JsonConvert.DeserializeObject<Deal>(serializedDeal));
+                return JsonConvert.DeserializeObject<T>(serializedEntity).ToMaybe();
             }
             catch (Exception)
             {
-                return new Maybe<Deal>();
+                return Maybe<T>.Nothing;
             }
         }
     }

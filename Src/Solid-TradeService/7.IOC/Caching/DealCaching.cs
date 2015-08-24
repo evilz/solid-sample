@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Immutable;
 using System.Linq;
+using Functional.Maybe;
 using TradeApp.Models;
 
 namespace TradeApp
 {
-    public class DealCaching : IDealReader, IDealWriter
+    public class Caching<T> : IReadWrite<T> where T : IIdentifiable
     {
-        private readonly IDealReader _reader;
-        private readonly IDealWriter _writer;
-        private ImmutableDictionary<string, Maybe<Deal>> _cache;
+        private readonly IReadWrite<T> _decoretee;
+        private ImmutableDictionary<string, Maybe<T>> _cache;
 
-        public DealCaching(IDealReader reader, IDealWriter writer)
+        public Caching(IReadWrite<T> decoretee)
         {
-            _reader = reader;
-            _writer = writer;
-            _cache = ImmutableDictionary<string, Maybe<Deal>>.Empty;
+            _decoretee = decoretee;
+
+            _cache = ImmutableDictionary<string, Maybe<T>>.Empty;
         }
 
-        public void Save(Maybe<Deal> deal)
+        public void Save(Maybe<T> entity)
         {
-            _writer.Save(deal);
-            ImmutableInterlocked.AddOrUpdate(ref _cache, deal.Single().Id, deal, (i, d) => deal);
+            _decoretee.Save(entity);
+            if(entity.HasValue)
+                ImmutableInterlocked.AddOrUpdate(ref _cache, entity.Value.Id, entity, (i, d) => entity);
 
         }
 
-        public Maybe<Deal> Load(string id)
+        public Maybe<T> Load(string id)
         {
-            return ImmutableInterlocked.GetOrAdd(ref _cache, id, i => _reader.Load(i));
+            return ImmutableInterlocked.GetOrAdd(ref _cache, id, i => _decoretee.Load(i));
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using TradeApp.Models;
+﻿using Functional.Maybe;
+using TradeApp.Models;
 
 namespace TradeApp
 {
-    public interface IDealSerializer
+    public interface ISerializer<T> where T : IIdentifiable
     {
-        string SerializeDeal(Deal deal);
-        Maybe<Deal> DeserializeDeal(string serializedDeal);
+        string Serialize(T entity);
+        Maybe<T> Deserialize(string serializedEntity);
     }
 }

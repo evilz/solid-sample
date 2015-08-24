@@ -1,7 +1,7 @@
 ﻿using System;
 namespace TradeApp.Models
 {
-    public class Deal
+    public class Deal : IIdentifiable
     {
         private Deal(string id, double price,  int quantity, string symbol, DateTime time)
         {

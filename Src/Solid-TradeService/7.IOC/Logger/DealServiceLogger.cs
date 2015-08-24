@@ -1,33 +1,34 @@
+using System.ComponentModel;
 using System.Linq;
+using Functional.Maybe;
 using TradeApp.Logging;
 using TradeApp.Models;
 
 namespace TradeApp
 {
-    public class DealServiceLogger : IDealReader, IDealWriter
+    public class Logger<T> : IReadWrite<T> where T : IIdentifiable
     {
-        private readonly IDealReader _reader;
-        private readonly IDealWriter _writer;
+        private readonly IReadWrite<T> _decoretee;
+
         private static readonly ILog _logger = LogProvider.For<DealService>();
 
-        public DealServiceLogger(IDealReader reader, IDealWriter writer)
+        public Logger(IReadWrite<T> decoretee)
         {
-            _reader = reader;
-            _writer = writer;
+            _decoretee = decoretee;
         }
 
-        public virtual void Saving(Maybe<Deal> deal)
+        public virtual void Saving(Maybe<T> entity)
         {
-            if(deal.Any())
-                _logger.Info($"Saving : {deal}.");
+            if(entity.HasValue)
+                _logger.Info($"Saving : {entity}.");
             else
-                _logger.Warn($" Try Saving : {deal}.");
+                _logger.Warn($" Try Saving : {entity}.");
             
         }
 
-        public virtual void Saved(Maybe<Deal> deal)
+        public virtual void Saved(Maybe<T> deal)
         {
-            if (deal.Any())
+            if (deal.HasValue)
                 _logger.Info($"Saved : {deal}.");
             else
                 _logger.Warn($" Try Saved : {deal}.");
@@ -43,29 +44,29 @@ namespace TradeApp
             _logger.Warn($"No deal {id} found.");
         }
 
-        public virtual void Loaded(Deal deal)
+        public virtual void Loaded(T entity)
         {
-            _logger.Info($"Returning deal {deal.Id}.");
+            _logger.Info($"Returning deal {entity.Id}.");
         }
 
-        public Maybe<Deal> Load(string id)
+        public Maybe<T> Load(string id)
         {
             Loading(id);
-            var deal = _reader.Load(id);
-            if(deal.Any())
-                Loaded(deal.Single());
+            var entity = _decoretee.Load(id);
+            if(entity.HasValue)
+                Loaded(entity.Value);
             else
             {
                 DidNotFind(id);
             }
-            return deal;
+            return entity;
         }
 
-        public void Save(Maybe<Deal> deal)
+        public void Save(Maybe<T> entity)
         {
-            Saving(deal);
-            _writer.Save(deal);
-            Saved(deal);
+            Saving(entity);
+            _decoretee.Save(entity);
+            Saved(entity);
         }
     }
 }

@@ -1,34 +1,28 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
-using System.IO;
-using System.Linq;
+using Functional.Maybe;
 using TradeApp.Models;
 
 namespace TradeApp
 {
     public class DealService
     {
-        private readonly IDealWriter _writer;
-        private readonly IDealReader _reader;
+        private readonly IReadWrite<Deal> _dealReadWrite;
 
-        public DealService(IDealWriter writer, IDealReader reader)
+        public DealService(IReadWrite<Deal> dealReadWrite)
         {
-            if (writer == null) { throw new ArgumentNullException(nameof(writer)); }
-            if (reader == null) { throw new ArgumentNullException(nameof(reader)); }
+            if (dealReadWrite == null) { throw new ArgumentNullException(nameof(dealReadWrite)); }
             
-            _writer = writer;
-            _reader = reader;
-
+            _dealReadWrite = dealReadWrite;
         }
         
         public void Save(Maybe<Deal> deal)
         {
-             _writer.Save(deal);
+             _dealReadWrite.Save(deal);
         }
 
         public Maybe<Deal> Load(string id)
         { 
-            return _reader.Load(id);
+            return _dealReadWrite.Load(id);
         }
     }
 }

@@ -1,5 +1,5 @@
-# Step 4 : Dependency Inversion
+# Step 7 : 
 
-- Create IDealWriter
-    - add Save method
-    - implement this interface everywhere and remove other Save from interfaces
+- create interface for entity  : IIdentifiable
+- Create IEntityReadWrite
+

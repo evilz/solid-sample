@@ -80,8 +80,16 @@
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="Functional.Maybe, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Functional.Maybe.1.0.3\lib\Functional.Maybe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=2.8.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.2.8.3\lib\net45\SimpleInjector.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -99,17 +107,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\DealCaching.cs" />
-    <Compile Include="IDealReader.cs" />
-    <Compile Include="IDealWriter.cs" />
+    <Compile Include="IReadWrite.cs" />
+    <Compile Include="Models\IIdentifiable.cs" />
+    <Compile Include="UsersManager.cs" />
     <Compile Include="Serializer\DealSerializer.cs" />
     <Compile Include="Logger\DealServiceLogger.cs" />
     <Compile Include="Serializer\IDealSerializer.cs" />
-    <Compile Include="Storage\FileDealStorage.cs" />
-    <Compile Include="Storage\IDealStorage.cs" />
+    <Compile Include="Storage\FileStorage.cs" />
     <Compile Include="Storage\IFileLocator.cs" />
     <Compile Include="Log\ColoredConsoleLogProvider.cs" />
     <Compile Include="Log\LibLog.cs" />
-    <Compile Include="Maybe.cs" />
     <Compile Include="Models\Deal.cs" />
     <Compile Include="DealService.cs" />
     <Compile Include="Models\OrderDirection.cs" />
