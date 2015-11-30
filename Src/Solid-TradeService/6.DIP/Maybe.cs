@@ -17,7 +17,7 @@ namespace TradeApp
 
         public Maybe(T value)
         {
-            if (value == null) throw new ArgumentNullException(nameof(value));
+            if (value == null) throw new ArgumentNullException("value");
             _values = new[] {value};
         }
 

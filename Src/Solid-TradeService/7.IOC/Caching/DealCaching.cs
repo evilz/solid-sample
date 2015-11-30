@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Immutable;
-using System.Linq;
+﻿using System.Collections.Immutable;
 using Functional.Maybe;
 using TradeApp.Models;
 
-namespace TradeApp
+namespace TradeApp.Caching
 {
     public class Caching<T> : IReadWrite<T> where T : IIdentifiable
     {

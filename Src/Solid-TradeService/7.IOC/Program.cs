@@ -3,6 +3,7 @@ using Functional.Maybe;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 using TradeApp.App_Packages.LibLog._4._2;
+using TradeApp.Caching;
 using TradeApp.Logging;
 using TradeApp.Models;
 

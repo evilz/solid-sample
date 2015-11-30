@@ -12,15 +12,18 @@ namespace TradeApp.Models
             Symbol = symbol;
         }
 
-        public static Deal Empty => new Deal("Empty", 0, 0, "Unset", DateTime.MinValue);
+        public static Deal Empty
+        {
+            get { return new Deal("Empty", 0, 0, "Unset", DateTime.MinValue); }
+        }
 
-        public string Id { get;  }
-        public double Price { get;  }
-        public DateTime Time { get; }
-        public int Quantity { get;  }
+        public string Id { get; set; }
+        public double Price { get; set; }
+        public DateTime Time { get; set; }
+        public int Quantity { get; set; }
 
-        public string Symbol { get; }
-       
+        public string Symbol { get; set; }
+
         public OrderDirection Direction
         {
             get {
@@ -42,7 +45,8 @@ namespace TradeApp.Models
         
         public override string ToString()
         {
-            return $"OrderId:  {Id} {Direction} order for {Quantity} unit{(Quantity == 1 ? "" : "s")} of {Symbol}";
+            return String.Format("OrderId:  {0} {1} order for {2} unit{3} of {4}", Id, Direction, Quantity,
+                Quantity == 1 ? "" : "s", Symbol);
         }
     }
 }

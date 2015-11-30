@@ -14,7 +14,7 @@ namespace TradeApp
         public DealService(string username)
         {
             if(username == null)
-                { throw new ArgumentNullException(nameof(username)); }
+                { throw new ArgumentNullException("username"); }
 
             if (!Directory.Exists(username))
                 { Directory.CreateDirectory(username); }
@@ -22,7 +22,7 @@ namespace TradeApp
             Username = username;
         }
 
-        public string Username { get; }
+        public string Username { get;private set; }
         
         public void Save(string id, Deal deal)
         {

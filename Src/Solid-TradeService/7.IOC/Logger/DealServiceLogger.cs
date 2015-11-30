@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Linq;
 using Functional.Maybe;
@@ -20,33 +21,33 @@ namespace TradeApp
         public virtual void Saving(Maybe<T> entity)
         {
             if(entity.HasValue)
-                _logger.Info($"Saving : {entity}.");
+                _logger.Info(String.Format("Saving : {0}.", entity));
             else
-                _logger.Warn($" Try Saving : {entity}.");
+                _logger.Warn(String.Format(" Try Saving : {0}.", entity));
             
         }
 
         public virtual void Saved(Maybe<T> deal)
         {
             if (deal.HasValue)
-                _logger.Info($"Saved : {deal}.");
+                _logger.Info(String.Format("Saved : {0}.", deal));
             else
-                _logger.Warn($" Try Saved : {deal}.");
+                _logger.Warn(String.Format(" Try Saved : {0}.", deal));
         }
 
         public virtual void Loading(string id)
         {
-            _logger.Info($"Loading deal {id}.");
+            _logger.Info(String.Format("Loading deal {0}.", id));
         }
 
         public virtual void DidNotFind(string id)
         {
-            _logger.Warn($"No deal {id} found.");
+            _logger.Warn(String.Format("No deal {0} found.", id));
         }
 
         public virtual void Loaded(T entity)
         {
-            _logger.Info($"Returning deal {entity.Id}.");
+            _logger.Info(String.Format("Returning deal {0}.", entity.Id));
         }
 
         public Maybe<T> Load(string id)

@@ -10,7 +10,7 @@ namespace TradeApp
 
         public DealService(IReadWrite<Deal> dealReadWrite)
         {
-            if (dealReadWrite == null) { throw new ArgumentNullException(nameof(dealReadWrite)); }
+            if (dealReadWrite == null) { throw new ArgumentNullException("dealReadWrite"); }
             
             _dealReadWrite = dealReadWrite;
         }

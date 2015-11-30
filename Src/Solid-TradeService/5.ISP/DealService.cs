@@ -11,7 +11,7 @@ namespace TradeApp
         public DealService(string username)
         {
             if (username == null)
-            { throw new ArgumentNullException(nameof(username)); }
+            { throw new ArgumentNullException("username"); }
 
             if (!Directory.Exists(username))
             { Directory.CreateDirectory(username); }
@@ -23,16 +23,16 @@ namespace TradeApp
             Logger = new DealServiceLogger();
         }
 
-        public virtual IDealCaching Cache { get; }
+        public virtual IDealCaching Cache { get; set; }
 
-        public virtual IDealStorage Storage { get; }
+        public virtual IDealStorage Storage { get; set; }
 
-        public virtual IDealServiceLogger Logger { get; }
+        public virtual IDealServiceLogger Logger { get; set; }
 
-        public virtual IDealSerializer Serializer { get; }
-        
-        public string Username { get; }
-        
+        public virtual IDealSerializer Serializer { get; set; }
+
+        public string Username { get; set; }
+
         public void Save(string id, Deal deal)
         {
             Logger.Saving(deal);

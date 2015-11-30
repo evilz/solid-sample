@@ -15,7 +15,7 @@ namespace TradeApp
         public DealService(string username)
         {
             if(username == null)
-                { throw new ArgumentNullException(nameof(username)); }
+                { throw new ArgumentNullException("username"); }
 
             if (!Directory.Exists(username))
                 { Directory.CreateDirectory(username); }
@@ -24,8 +24,8 @@ namespace TradeApp
             _cache = ImmutableDictionary<string, Deal>.Empty;
         }
 
-        public string Username { get; }
-        
+        public string Username { get; private set; }
+
         public void Save(string id, Deal deal)
         {
             _logger.Info("Saving deal "+ deal.Id);

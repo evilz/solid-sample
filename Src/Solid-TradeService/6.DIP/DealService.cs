@@ -13,8 +13,8 @@ namespace TradeApp
 
         public DealService(IDealWriter writer, IDealReader reader)
         {
-            if (writer == null) { throw new ArgumentNullException(nameof(writer)); }
-            if (reader == null) { throw new ArgumentNullException(nameof(reader)); }
+            if (writer == null) { throw new ArgumentNullException("writer"); }
+            if (reader == null) { throw new ArgumentNullException("reader"); }
             
             _writer = writer;
             _reader = reader;
