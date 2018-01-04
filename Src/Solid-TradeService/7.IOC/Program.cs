@@ -1,7 +1,6 @@
 ﻿using System;
 using Functional.Maybe;
 using SimpleInjector;
-using SimpleInjector.Extensions;
 using TradeApp.App_Packages.LibLog._4._2;
 using TradeApp.Logging;
 using TradeApp.Models;
@@ -58,4 +57,5 @@ namespace TradeApp
             return container.GetInstance<TRoot>();
         }
     }
+
 }

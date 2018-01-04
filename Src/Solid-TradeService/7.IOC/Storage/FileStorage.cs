@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Functional.Maybe;
+using Newtonsoft.Json;
 using TradeApp.Models;
 
 namespace TradeApp
@@ -40,9 +41,10 @@ namespace TradeApp
         {
             if (entity.HasValue)
             {
-                var path = GetFileName(entity.Value.Id).FullName;
+                var path = GetFileName(entity.Value.Id);
+                if(!path.Directory.Exists) { path.Directory.Create(); }
                 var serializedDeal = _serializer.Serialize(entity.Value);
-                File.WriteAllText(path, serializedDeal);
+                File.WriteAllText(path.FullName, serializedDeal);
             }
         }
     }

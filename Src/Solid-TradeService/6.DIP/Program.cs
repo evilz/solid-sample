@@ -15,6 +15,7 @@ namespace TradeApp
 
             var serializer = new DealSerializer();
             var dealStorage = new FileDealStorage(username,serializer);
+            //var dealStorage = new SQLDealStorage("toto");
             var dealCache = new DealCaching(dealStorage,dealStorage);
             var dealLogger = new DealServiceLogger(dealCache,dealCache);
 
@@ -30,7 +31,8 @@ namespace TradeApp
             );
 
             dealService.Save(new Maybe<Deal>(deal));
-            
+
+
 
             Console.WriteLine();
             Console.WriteLine();
