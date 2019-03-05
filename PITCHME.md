@@ -1,8 +1,3 @@
----
-separator: '^\r?\n---\r?\n$'
-verticalSeparator: '^\r?\n--\r?\n$'
-theme: white
----
 
 # intro
 
