@@ -1,14 +1,18 @@
 ﻿using System;
-using TradeApp.App_Packages.LibLog._4._2;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using TradeApp.Models;
 
 namespace TradeApp
 {
     class Program
     {
+
+        private static readonly ILogger _logger = new ConsoleLogger(nameof(Program), (category, logLevel) => logLevel >= LogLevel.Trace, true);
+
         static void Main(string[] args)
         {
-            Logging.LogProvider.SetCurrentLogProvider(new ColoredConsoleLogProvider()); 
+
 
             DealService service = new DealService();
 
@@ -24,13 +28,10 @@ namespace TradeApp
             };
             var result = service.Save(id, deal);
 
-            Console.WriteLine(result);
-
-            Console.WriteLine();
-            Console.WriteLine();
+            _logger.LogInformation(result);
 
            var vincentDeal =  service.Load(id);
-           Console.WriteLine(vincentDeal);
+           _logger.LogInformation(vincentDeal.ToString());
 
             Console.ReadLine();
         }

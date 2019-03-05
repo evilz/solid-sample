@@ -58,19 +58,14 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.4" />
-    <PackageReference Include="Functional.Maybe" Version="1.1.1" />
-    <PackageReference Include="LibLog" Version="4.2.6">
+    <PackageReference Include="Dapper" Version="1.60.1" />
+    <PackageReference Include="Functional.Maybe" Version="2.0.10" />
+    <PackageReference Include="LibLog" Version="5.0.6">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="SimpleInjector" Version="4.0.12" />
-    <PackageReference Include="System.Collections.Immutable" Version="1.4.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Net.Http" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="SimpleInjector" Version="4.4.3" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DealServiceDiagram.cd" />
